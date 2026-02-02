@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartReach – Preview for GIF</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --card: #161a22;
+      --border: #2a3140;
+      --text: #e8eaef;
+      --muted: #9ca3b4;
+      --accent: #6366f1;
+      --success: #22c55e;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      background-image: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.12), transparent);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .stage {
+      width: 100%;
+      max-width: 900px;
+      min-height: 500px;
+      position: relative;
+    }
+    .screen {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: cycle 12s ease-in-out infinite;
+    }
+    .screen:nth-child(1) { animation-delay: 0s; }
+    .screen:nth-child(2) { animation-delay: 3s; }
+    .screen:nth-child(3) { animation-delay: 6s; }
+    .screen:nth-child(4) { animation-delay: 9s; }
+    @keyframes cycle {
+      0%, 22% { opacity: 1; }
+      28%, 97% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    .brand { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .brand-icon { color: var(--accent); font-size: 24px; }
+    .brand-name { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; }
+    .tagline { color: var(--muted); font-size: 14px; margin: 0 0 24px; text-align: center; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 16px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .kpi:nth-child(1) { animation-delay: 0s; }
+    .kpi:nth-child(2) { animation-delay: 0.3s; }
+    .kpi:nth-child(3) { animation-delay: 0.6s; }
+    .kpi:nth-child(4) { animation-delay: 0.9s; }
+    @keyframes pulse {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .kpi-value { font-size: 22px; font-weight: 700; color: var(--success); }
+    .chart-placeholder {
+      height: 200px;
+      background: linear-gradient(180deg, rgba(99,102,241,0.15) 0%, transparent 100%);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .bar { height: 100%; width: 12%; background: var(--accent); border-radius: 4px; animation: grow 1.5s ease-out; }
+    .bars { display: flex; gap: 8px; align-items: flex-end; height: 120px; padding: 16px 0; }
+    .bars .bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+    .bars .bar:nth-child(2) { height: 65%; animation-delay: 0.2s; }
+    .bars .bar:nth-child(3) { height: 85%; animation-delay: 0.3s; }
+    .bars .bar:nth-child(4) { height: 55%; animation-delay: 0.4s; }
+    .bars .bar:nth-child(5) { height: 95%; animation-delay: 0.5s; }
+    .bars .bar:nth-child(6) { height: 70%; animation-delay: 0.6s; }
+    .bars .bar:nth-child(7) { height: 45%; animation-delay: 0.7s; }
+    @keyframes grow {
+      from { transform: scaleY(0); transform-origin: bottom; }
+      to { transform: scaleY(1); }
+    }
+    .hint {
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <!-- Screen 1: Login -->
+    <div class="screen">
+      <div class="card" style="max-width: 380px; margin: 0 auto;">
+        <div class="brand" style="justify-content: center;">
+          <span class="brand-icon">◆</span>
+          <span class="brand-name">SmartReach</span>
+        </div>
+        <p class="tagline">Marketing Automation & Campaign Intelligence</p>
+        <div style="height: 40px; background: var(--border); border-radius: 8px; margin-bottom: 16px; opacity: 0.6;"></div>
+        <div style="height: 40px; background: var(--border); border-radius: 8px; margin-bottom: 24px; opacity: 0.6;"></div>
+        <div style="height: 44px; background: var(--accent); border-radius: 8px; max-width: 120px; margin: 0 auto;"></div>
+      </div>
+    </div>
+    <!-- Screen 2: Dashboard hero -->
+    <div class="screen">
+      <div class="card">
+        <h2 style="margin: 0 0 8px; font-size: 22px; font-weight: 700;">Marketing Automation & Campaign Intelligence</h2>
+        <p style="color: var(--muted); margin: 0 0 24px; font-size: 15px;">Automated personalized campaigns, real-time analytics, and behavior-based segmentation.</p>
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-label">Engagement lift</div><div class="kpi-value">+45%</div></div>
+          <div class="kpi"><div class="kpi-label">Setup time saved</div><div class="kpi-value">-60%</div></div>
+          <div class="kpi"><div class="kpi-label">Visibility</div><div class="kpi-value">+70%</div></div>
+          <div class="kpi"><div class="kpi-label">Conversion</div><div class="kpi-value">+35%</div></div>
+        </div>
+        <div class="chart-placeholder">Campaign performance — Real-time analytics</div>
+      </div>
+    </div>
+    <!-- Screen 3: Charts -->
+    <div class="screen">
+      <div class="card">
+        <h3 style="margin: 0 0 16px; font-size: 16px;">Campaign performance (last 7 days)</h3>
+        <div class="bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <p style="color: var(--muted); font-size: 13px; margin: 0;">Opens · Clicks · Conversions</p>
+      </div>
+    </div>
+    <!-- Screen 4: Loop back -->
+    <div class="screen">
+      <div class="card" style="text-align: center;">
+        <div class="brand" style="justify-content: center;">
+          <span class="brand-icon">◆</span>
+          <span class="brand-name">SmartReach</span>
+        </div>
+        <p class="tagline">Automated campaigns · Rule-based workflows · Behavior segmentation</p>
+        <p style="color: var(--muted); font-size: 14px; margin: 24px 0 0;">Record this page with ScreenToGif or LICEcap to create a GIF</p>
+      </div>
+    </div>
+  </div>
+  <p class="hint">Open this file in a browser and use ScreenToGif, LICEcap, or browser extension to record as GIF</p>
+</body>
+</html>
